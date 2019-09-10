@@ -46,7 +46,8 @@ int main()
 	cout << "it took you: " << guess << " tries" << endl;
  
 	
-       cout << "do you want to play again? y/n"<< endl;
+       cout << "do you want to play again? 1/0"<< endl;
+       cout << "type 1 for yes or 0 for no" << endl;
 	  //asks to play again, if yes: restart/if no: end
        cin >> input;
        cout << input << endl;
