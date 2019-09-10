@@ -24,9 +24,6 @@ int main()
     while (input != random) {
       guess++; //increases the guesses counter
 
-      // cout << random << endl;
-      // cout << "game in progress";
-      // cout << guess;
       cin >> input;
 
 
@@ -54,9 +51,7 @@ int main()
 
 
        if (input == 1){
-	
-	  // int random = rand()%100;
-	 // cout << random << endl;
+	 cout << "restarting..." << endl;
 	 }
 
        if (input == 0) {
