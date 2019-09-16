@@ -2,6 +2,17 @@
 #include <cstdlib>
 #include <ctime>
 
+/*
+
+Nicolas F.
+Guessing Game: Program will randomly generate a number between 0-100 
+Program will tell the user if their guesses are too high or too low
+At the end of the game, program will display number of guesses and
+prompt the user to restart or exit
+
+9/9/19
+*/
+
 
 
 using namespace std;
@@ -23,7 +34,7 @@ int main()
 
     while (input != random) {
       guess++; //increases the guesses counter
-
+      cout << "Please enter a number" << endl;
       cin >> input;
 
 
@@ -57,6 +68,7 @@ int main()
        if (input == 0) {
 	 game = 0;
        }
+ 
 
     
   }
