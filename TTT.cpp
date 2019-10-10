@@ -9,18 +9,15 @@ Start Date: 9/20/19
  */
 using namespace std;
 
-char board[3][3]; //printed array
-int board2[3][3]; //internal array, used to check wins/ties
-bool gamestart = true; //keeps the game running
-int player = 2; //keeps track of the player turn
-//1 = Player X, 2 = Player O
-char XY = 'X'; //keeps track of what is written to the array
-char row; //keeps track of current row
-char col; //keeps track of current column
-int xwin = 0; //counts X wins
-int owin = 0; //counts O wins
 
-void turn() {//flips player turns every time a spot is filled in
+void turn(int &player, char &XY);
+void clear(char board[3][3],int board2[3][3]);
+void print(char board[3][3],int board2[3][3]);
+bool legal(char board[3][3]);
+bool tie(int board2[3][3]);
+void win(int board2[3][3]);
+
+void turn(int &player, char &XY) {//flips player turns every time a spot is filled in
   if (player == 1) {
     XY = 'X';
     player = 2;
@@ -31,7 +28,7 @@ void turn() {//flips player turns every time a spot is filled in
   }
 }
 
-void clear() { //clears the board arrays
+void clear(char board[3][3], int board2[3][3]) { //clears the board arrays
   for (int j = 0; j < 3; j++){
     for (int i = 0; i < 3; i++){
       board[i][j] = 32;
@@ -40,7 +37,7 @@ void clear() { //clears the board arrays
   }
 }
 
-void print() { //"draws" the board 
+void print(char board[3][3], int board2[3][3]) { //"draws" the board 
   cout << " " << "1" << "2" << "3" << endl;
   for (int j = 0; j < 3; j++){
     cout << j+1;
@@ -52,7 +49,7 @@ void print() { //"draws" the board
 }
 
 
-bool legal() { //checks to see if a move is legal
+bool legal(char board[3][3], char row, char col) { //checks to see if a move is legal
   if (board[col-'1'][row-'1'] == 32) {
     return true;
   }
@@ -60,7 +57,7 @@ bool legal() { //checks to see if a move is legal
 } 
 
 
-bool tie() { //checks to see if there is a tie
+bool tie(int board2[3][3]) { //checks to see if there is a tie
   if (board2[0][0] != 0 && board2[0][1] != 0 && board2[0][2] != 0 && board2[1][0] != 0 && board2[1][1] != 0 && board2[1][2] != 0 && board2[2][0] != 0 && board2[2][1] != 0 && board2[2][2] != 0) {
     return true;
   }
@@ -69,12 +66,12 @@ bool tie() { //checks to see if there is a tie
 }
 
 
-void win() { //checks to see if a player has won
+void win(char board[3][3],int board2[3][3], int player, int xwin, int owin) { //checks to see if a player has won
   if (board2[0][0] == player && board2[1][1] == player && board2[2][2] == player) {
     //diagonal win
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -86,8 +83,8 @@ void win() { //checks to see if a player has won
   if (board2[0][0] == player && board2[0][1] == player && board2[0][2] == player) {
     //left column
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -99,8 +96,8 @@ void win() { //checks to see if a player has won
   if (board2[1][0] == player && board2[1][1] == player && board2[1][2] == player) {
     //middle column
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -112,8 +109,8 @@ void win() { //checks to see if a player has won
   if (board2[2][0] == player && board2[2][1] == player && board2[2][2] == player) {
     //right column
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -125,8 +122,8 @@ void win() { //checks to see if a player has won
   if (board2[0][2] == player && board2[1][1] == player && board2[2][0] == player) {
     //diagonal win
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -138,8 +135,8 @@ void win() { //checks to see if a player has won
   if (board2[0][0] == player && board2[1][0] == player && board2[2][0] == player) {
     //top row
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -152,8 +149,8 @@ void win() { //checks to see if a player has won
   if (board2[0][1] == player && board2[1][1] == player && board2[2][1] == player) {
     //middle row
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -165,8 +162,8 @@ void win() { //checks to see if a player has won
   if (board2[0][2] == player && board2[1][2] == player && board2[2][2] == player) {
     //bottom row
     cout << "Victory!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
     if (player == 2) {
       xwin++;
     }
@@ -175,10 +172,10 @@ void win() { //checks to see if a player has won
     }
   }
 
-  if (tie() == true) {
+  if (tie(board2) == true) {
     cout << "Tie!" << endl;
-    print();
-    clear();
+    print(board, board2);
+    clear(board, board2);
   }
 
   
@@ -193,11 +190,26 @@ void win() { //checks to see if a player has won
 
 
 int main() {
-  clear();
 
+  
+char board[3][3]; //printed array
+int board2[3][3]; //internal array, used to check wins/ties
+bool gamestart = true; //keeps the game running
+int player = 2; //keeps track of the player turn
+//1 = Player X, 2 = Player O
+char XY = 'X'; //keeps track of what is written to the array
+char row; //keeps track of current row
+char col; //keeps track of current column
+int xwin = 0; //counts X wins
+int owin = 0; //counts O wins
+
+
+ clear(board, board2);
+
+  
   while (gamestart == true) {
 
-    print();
+    print(board, board2);
     cout << "Player Turn is: " << player << endl;
     cout << "Select row (1,2 or 3)" << endl; 
     cin.get(row);
@@ -209,32 +221,32 @@ int main() {
       if (col == '1') {
       //cout << "row: " << row << endl;
       //cout << "col: " << col << endl;
-	legal();
-	if (legal() == true){
+	legal(board, row, col);
+	if (legal(board, row, col) == true){
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
 	
       }
   
       if (col == '2') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       if (col == '3') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       else {
@@ -249,30 +261,30 @@ int main() {
       cin.get();
       
       if (col == '1') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       if (col == '2') {
-	legal();
-	if (legal() == true){
+	legal(board, row, col);
+	if (legal(board, row, col) == true){
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       if (col == '3') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       
@@ -286,31 +298,31 @@ int main() {
       cin.get(col);
       cin.get();
       if (col == '1') {
-	legal();
-	if (legal() == true){
+	legal(board, row, col);
+	if (legal(board, row, col) == true){
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       if (col == '2') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       
       if (col == '3') {
-	legal();
-	if (legal() == true) {
+	legal(board, row, col);
+	if (legal(board, row, col) == true) {
 	  board[col-'1'][row-'1'] = XY;
 	  board2[col-'1'][row-'1'] = player;
-	  win();
-	  turn();
+	  win(board, board2, player, xwin, owin);
+	  turn(player, XY);
 	}
       }
       
