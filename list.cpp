@@ -23,7 +23,7 @@ struct Student {
 };
 
 void add(vector<Student*>*v) {
-  //"add" function of the program, reads in first/last name, id and gpa
+  //"add" function of the program, reads in first/last name, id and gpa, then stores to vector
 
   Student* a = new Student();
   cout << "Enter student first name" << endl;
@@ -70,7 +70,7 @@ void print(vector<Student*>*v) {
       
 }
 
-int main() {
+int main() { //reads in the user input and executes the given command
   bool running = true;
   char user;
   vector<Student*>*v = new vector<Student*>;
@@ -78,16 +78,16 @@ int main() {
     
     cin.get(user);
     cin.get();
-    if (user == 'p') {
+    if (user == 'p') { //user types 'p' to Print
       print(v);
     }
-    if (user == 'd') {
+    if (user == 'd') { //user types 'd' to Delete
       del(v);
     }
-    if (user == 'a') {
+    if (user == 'a') { //user types 'a' to Add
       add(v);
     }
-    if (user == 'q') {
+    if (user == 'q') { //user types 'q' to Quit
       running = false;
     }
     else {
