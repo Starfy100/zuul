@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iterator>
+#include <iomanip>
 
 /*
 Author: Nicolas F.
@@ -65,7 +66,7 @@ void print(vector<Student*>*v) {
   for (ptr = v->begin(); ptr < v->end(); ptr++){
     cout << "Name: " << (*ptr)->firstname << " " << (*ptr)-> lastname << endl;
     cout << "ID: " << (*ptr)->id << endl;
-    cout << "GPA: " << (*ptr)->gpa << endl;
+    cout << "GPA: " << fixed << setprecision(2) <<(*ptr)->gpa << endl;
   }
       
 }
