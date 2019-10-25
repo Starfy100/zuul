@@ -67,8 +67,7 @@ void print(vector<Student*>*v) {
     cout << "Name: " << (*ptr)->firstname << " " << (*ptr)-> lastname << endl;
     cout << "ID: " << (*ptr)->id << endl;
     cout << "GPA: " << fixed << setprecision(2) <<(*ptr)->gpa << endl;
-  }
-      
+  }      
 }
 
 int main() { //reads in the user input and executes the given command
@@ -94,8 +93,7 @@ int main() { //reads in the user input and executes the given command
     else {
       cout << "Available commands are: p, d, a or q" << endl;
       cout << "(Print, Delete, Add or Quit)" << endl;
-    }
- 
+    } 
   }
   return 0;
 }
