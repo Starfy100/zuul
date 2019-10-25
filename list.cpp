@@ -54,6 +54,7 @@ void del(vector<Student*>*v) {
 
    for( vector<Student*>::iterator it = v->begin(); it !=v->end(); it++) {
      if((*it)->id == deleteid) {
+       delete *it;
        v->erase(it);
        break;
      }
