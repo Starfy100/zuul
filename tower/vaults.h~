@@ -1,0 +1,17 @@
+#ifndef VAULTS_H
+#define VAULTS_H
+
+#include <iostream>
+#include <string.h>
+#include "rooms.h"
+
+using namespace std;
+class vaults:public rooms {
+ public:
+
+ private:
+
+
+}
+
+#endif
