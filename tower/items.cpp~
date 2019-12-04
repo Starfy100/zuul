@@ -1,7 +1,0 @@
-#include <iostream>
-#include <string.h>
-#include "rooms.h"
-
-using namespace std;
-
-char* items::get

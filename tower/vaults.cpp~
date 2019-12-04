@@ -1,4 +1,0 @@
-#include <iostream>
-#include <string.h>
-#include "vaults.h"
-#include "rooms.h"
