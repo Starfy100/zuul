@@ -246,136 +246,136 @@ void setup(vector<rooms*>*r, vector<items*>*i){ //setup of room data and item da
   strcpy(mysouth, "south");
 
   //room1 plaza exits  
-   tower->insert(pair<char*, rooms*>(myeast, room2));//leads to vaults
-   tower->insert(pair<char*, rooms*>(mynorth, room18));// leads to eververse
-   tower->insert(pair<char*, rooms*>(mysouth, room11));// leads to cryptarch
-   room1->setexits(tower);
+  tower->insert(pair<char*, rooms*>(myeast, room2));//leads to vaults
+  tower->insert(pair<char*, rooms*>(mynorth, room18));// leads to eververse
+  tower->insert(pair<char*, rooms*>(mysouth, room11));// leads to cryptarch
+  room1->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room2 vaults exits
+  tower->insert(pair<char*, rooms*>(mywest, room1));//leads to plaza
+  tower->insert(pair<char*, rooms*>(mynorth, room4));//leads to postmaster
+  tower->insert(pair<char*, rooms*>(myeast, room3));//leads to towerwalk
+  tower->insert(pair<char*, rooms*>(mysouth, room10));//leads to gunsmith
+  room2->setexits(tower);
 
-   tower = new map<char*, rooms*>();
-    //room2 vaults exits
-     tower->insert(pair<char*, rooms*>(mywest, room1));//leads to plaza
-     tower->insert(pair<char*, rooms*>(mynorth, room4));//leads to postmaster
-     tower->insert(pair<char*, rooms*>(myeast, room3));//leads to towerwalk
-     tower->insert(pair<char*, rooms*>(mysouth, room10));//leads to south
-     room2->setexits(tower);
-
-     tower = new map<char*, rooms*>();
- //room3 tower walk exits
-     tower->insert(pair<char*, rooms*>(mywest, room2));//leads to vaults
-     room3->setexits(tower);
-   
-    tower = new map<char*, rooms*>();
- //room4 postmaster exits
-     tower->insert(pair<char*, rooms*>(mynorth, room5));//leads to overlook
-     tower->insert(pair<char*, rooms*>(myeast, room6));//leads to bounty tracker
-     tower->insert(pair<char*, rooms*>(mysouth, room2));//leads to vaults
-     room3->setexits(tower);
-     
-tower = new map<char*, rooms*>();
- //room5 overlook exits
-     tower->insert(pair<char*, rooms*>(mysouth, room4));//leads to postmaster
-     room5->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room6 bounty tracker exits
-     tower->insert(pair<char*, rooms*>(mywest, room4));//leads to postmaster
-     tower->insert(pair<char*, rooms*>(mysouth, room10));//leads to stairwell
-     room6->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-     //room7 stairwell exits
-     tower->insert(pair<char*, rooms*>(mynorth, room6));//leads to bounty tracker
-     tower->insert(pair<char*, rooms*>(myeast, room8));//leads to crucible hallway
-     room7->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-     //room8 crucible hallway exits
-     tower->insert(pair<char*, rooms*>(mywest, room7));//leads to stairwell
-     tower->insert(pair<char*, rooms*>(myeast, room9));//leads to vanguard hall
-     room8->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room9 vanguard hall exits
-     tower->insert(pair<char*, rooms*>(mywest, room8));//leads to vaults
-     room9->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room10 gunsmith exits
-     tower->insert(pair<char*, rooms*>(mywest, room11));//leads to crpytarch
-     tower->insert(pair<char*, rooms*>(mynorth, room2));//leads to vaults
-     room10->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-     //room11 cryptarch exits
-     tower->insert(pair<char*, rooms*>(mynorth, room1));//leads to plaza
-     tower->insert(pair<char*, rooms*>(myeast, room10));//leads to gunsmith
-     tower->insert(pair<char*, rooms*>(mysouth, room12));//leads to hangar hallway
-     room11->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room12 hangar hallway exits
-     tower->insert(pair<char*, rooms*>(mynorth, room11));//leads to crpytarch
-     tower->insert(pair<char*, rooms*>(mysouth, room13));//leads to tower hangar
-     room12->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-     //room13 tower hangar exits
-     tower->insert(pair<char*, rooms*>(mynorth, room12));//leads to hangar hallway
-     tower->insert(pair<char*, rooms*>(myeast, room14));//leads to shipwright
-     room13->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room14 shipwright exits
-     tower->insert(pair<char*, rooms*>(mywest, room13));//leads to tower hangar
-     tower->insert(pair<char*, rooms*>(mynorth, room16));//leads to dead orbit
-     tower->insert(pair<char*, rooms*>(myeast, room15));//leads to future war cult
-     room14->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room15 fwc exits
-     tower->insert(pair<char*, rooms*>(mywest, room14));//leads to shipwright
-     room15->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room16 dead orbit exits
-     tower->insert(pair<char*, rooms*>(mysouth, room14));//leads to shipwright
-     tower->insert(pair<char*, rooms*>(myeast, room17));//leads to tower bar
-     room16->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room17 tower bar exits
-     tower->insert(pair<char*, rooms*>(mywest, room16));//leads to dead orbit
-     room17->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room18 eververse exits
-     tower->insert(pair<char*, rooms*>(mynorth, room19));//leads to tower north
-     tower->insert(pair<char*, rooms*>(mysouth, room1));//leads to plaza
-     room18->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room19 tower north exits
-     tower->insert(pair<char*, rooms*>(mywest, room22));//leads to new monarchy
-     tower->insert(pair<char*, rooms*>(mynorth, room21));//leads to speaker's chambers
-     tower->insert(pair<char*, rooms*>(myeast, room20));//leads to kiosks
-     tower->insert(pair<char*, rooms*>(mysouth, room18));//leads to eververse
-     room19->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-     //room20 tower kiosks exits
-     tower->insert(pair<char*, rooms*>(mywest, room19));//leads to tower north
-     room20->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room21 speaker's chambers exits
-     tower->insert(pair<char*, rooms*>(mysouth, room19));//leads to tower north
-     room21->setexits(tower);
-
-     tower = new map<char*, rooms*>();
-      //room22 new monarchy exits
-     tower->insert(pair<char*, rooms*>(myeast, room19));//leads to tower north
-     room22->setexits(tower);
-     
+  tower = new map<char*, rooms*>();
+  //room3 tower walk exits
+  tower->insert(pair<char*, rooms*>(mywest, room2));//leads to vaults
+  room3->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room4 postmaster exits
+  tower->insert(pair<char*, rooms*>(mynorth, room5));//leads to overlook
+  tower->insert(pair<char*, rooms*>(myeast, room6));//leads to bounty tracker
+  tower->insert(pair<char*, rooms*>(mysouth, room2));//leads to vaults
+  room4->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room5 overlook exits
+  tower->insert(pair<char*, rooms*>(mysouth, room4));//leads to postmaster
+  room5->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room6 bounty tracker exits
+  tower->insert(pair<char*, rooms*>(mywest, room4));//leads to postmaster
+  tower->insert(pair<char*, rooms*>(mysouth, room7));//leads to stairwell
+  room6->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room7 stairwell exits
+  tower->insert(pair<char*, rooms*>(mynorth, room6));//leads to bounty tracker
+  tower->insert(pair<char*, rooms*>(myeast, room8));//leads to crucible hallway
+  room7->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room8 crucible hallway exits
+  tower->insert(pair<char*, rooms*>(mywest, room7));//leads to stairwell
+  tower->insert(pair<char*, rooms*>(myeast, room9));//leads to vanguard hall
+  room8->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room9 vanguard hall exits
+  tower->insert(pair<char*, rooms*>(mywest, room8));//leads to vaults
+  room9->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room10 gunsmith exits
+  tower->insert(pair<char*, rooms*>(mywest, room11));//leads to crpytarch
+  tower->insert(pair<char*, rooms*>(mynorth, room2));//leads to vaults
+  room10->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room11 cryptarch exits
+  tower->insert(pair<char*, rooms*>(mynorth, room1));//leads to plaza
+  tower->insert(pair<char*, rooms*>(myeast, room10));//leads to gunsmith
+  tower->insert(pair<char*, rooms*>(mysouth, room12));//leads to hangar hallway
+  room11->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room12 hangar hallway exits
+  tower->insert(pair<char*, rooms*>(mynorth, room11));//leads to crpytarch
+  tower->insert(pair<char*, rooms*>(mysouth, room13));//leads to tower hangar
+  room12->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room13 tower hangar exits
+  tower->insert(pair<char*, rooms*>(mynorth, room12));//leads to hangar hallway
+  tower->insert(pair<char*, rooms*>(myeast, room14));//leads to shipwright
+  room13->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room14 shipwright exits
+  tower->insert(pair<char*, rooms*>(mywest, room13));//leads to tower hangar
+  tower->insert(pair<char*, rooms*>(mynorth, room16));//leads to dead orbit
+  tower->insert(pair<char*, rooms*>(myeast, room15));//leads to future war cult
+  room14->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room15 fwc exits
+  tower->insert(pair<char*, rooms*>(mywest, room14));//leads to shipwright
+  room15->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room16 dead orbit exits
+  tower->insert(pair<char*, rooms*>(mysouth, room14));//leads to shipwright
+  tower->insert(pair<char*, rooms*>(myeast, room17));//leads to tower bar
+  room16->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room17 tower bar exits
+  tower->insert(pair<char*, rooms*>(mywest, room16));//leads to dead orbit
+  room17->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room18 eververse exits
+  tower->insert(pair<char*, rooms*>(mynorth, room19));//leads to tower north
+  tower->insert(pair<char*, rooms*>(mysouth, room1));//leads to plaza
+  room18->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room19 tower north exits
+  tower->insert(pair<char*, rooms*>(mywest, room22));//leads to new monarchy
+  tower->insert(pair<char*, rooms*>(mynorth, room21));//leads to speaker's chambers
+  tower->insert(pair<char*, rooms*>(myeast, room20));//leads to kiosks
+  tower->insert(pair<char*, rooms*>(mysouth, room18));//leads to eververse
+  room19->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room20 tower kiosks exits
+  tower->insert(pair<char*, rooms*>(mywest, room19));//leads to tower north
+  room20->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room21 speaker's chambers exits
+  tower->insert(pair<char*, rooms*>(mysouth, room19));//leads to tower north
+  room21->setexits(tower);
+  
+  tower = new map<char*, rooms*>();
+  //room22 new monarchy exits
+  tower->insert(pair<char*, rooms*>(myeast, room19));//leads to tower north
+  room22->setexits(tower);
+  
      			    
   //room1 //plaza: north,south,east item: note
   //room2 //vaults: north,south,east,west no items
